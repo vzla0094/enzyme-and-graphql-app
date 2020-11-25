@@ -39,12 +39,20 @@ function App() {
 
   const [result, setResult] = useState("")
 
-  const addNumbers = (a, b) => {
+  const addNumbers = (a, b, prevResult) => {
     const aInt = parseInt(a)
     const bInt = parseInt(b)
-    aInt && bInt
-      ? setResult(aInt + bInt)
-      : setResult("Please specify numbers to add!")
+    const prevResultInt = parseInt(prevResult)
+
+    if (prevResultInt) {
+      aInt && bInt
+        ? setResult(aInt + bInt + prevResultInt)
+        : setResult("Please specify numbers to add!")
+    } else {
+      aInt && bInt
+        ? setResult(aInt + bInt)
+        : setResult("Please specify numbers to add!")
+    }
   }
 
   const changeNumbers = (number, value) => {
@@ -76,7 +84,9 @@ function App() {
           }
         ></input>
         <Button
-          onClick={() => addNumbers(numbers.firstNumber, numbers.secondNumber)}
+          onClick={() =>
+            addNumbers(numbers.firstNumber, numbers.secondNumber, result)
+          }
         >
           Add the numbers
         </Button>
