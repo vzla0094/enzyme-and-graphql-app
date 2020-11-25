@@ -42,7 +42,9 @@ function App() {
   const addNumbers = (a, b) => {
     const aInt = parseInt(a)
     const bInt = parseInt(b)
-    setResult(aInt + bInt)
+    aInt && bInt
+      ? setResult(aInt + bInt)
+      : setResult("Please specify numbers to add!")
   }
 
   const changeNumbers = (number, value) => {
