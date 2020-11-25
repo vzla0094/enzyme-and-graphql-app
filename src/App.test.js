@@ -48,6 +48,37 @@ describe("<Button/>", () => {
 
     expect(result).toEqual("Please specify numbers to add!")
   })
+
+  it("should add the previous calculation and the current one", () => {
+    firstNumber.simulate("change", {
+      target: { name: "firstNumber", value: 5 },
+    })
+    secondNumber.simulate("change", {
+      target: { name: "secondNumber", value: 10 },
+    })
+
+    let addButton = wrapper.find(Button)
+    addButton.simulate("click")
+    const prevResult = parseInt(wrapper.find("#result").props().children)
+
+    firstNumber.simulate("change", {
+      target: { name: "firstNumber", value: 5 },
+    })
+    secondNumber.simulate("change", {
+      target: { name: "secondNumber", value: 10 },
+    })
+
+    addButton = wrapper.find(Button)
+    addButton.simulate("click")
+
+    const firstNumberValue = wrapper.find("input[name='firstNumber']").props()
+      .value
+    const secondNumberValue = wrapper.find("input[name='secondNumber']").props()
+      .value
+    const result = parseInt(wrapper.find("#result").props().children)
+
+    expect(result).toEqual(prevResult + firstNumberValue + secondNumberValue)
+  })
 })
 
 //Testing styled components
