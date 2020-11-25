@@ -7,33 +7,47 @@ it("should render App without crashing", () => {
   shallow(<App />)
 })
 
-let wrapper
-
-beforeAll(() => {
-  wrapper = shallow(<App></App>)
+describe("<Button/>", () => {
+  const wrapper = shallow(<App></App>)
   const firstNumber = wrapper.find("input[name='firstNumber']")
   const secondNumber = wrapper.find("input[name='secondNumber']")
-  firstNumber.simulate("change", {
-    target: { name: "firstNumber", value: 5 },
+  let result
+
+  it("should add first and second numbers", () => {
+    firstNumber.simulate("change", {
+      target: { name: "firstNumber", value: 5 },
+    })
+    secondNumber.simulate("change", {
+      target: { name: "secondNumber", value: 10 },
+    })
+    // ALWAYS RE-FIND after anything changes (simulate)!
+    // https://github.com/enzymejs/enzyme/issues/1757#issuecomment-416669094
+    const firstNumberValue = wrapper.find("input[name='firstNumber']").props()
+      .value
+    const secondNumberValue = wrapper.find("input[name='secondNumber']").props()
+      .value
+
+    const addButton = wrapper.find(Button)
+    addButton.simulate("click")
+    result = parseInt(wrapper.find("#result").props().children)
+
+    expect(result).toEqual(firstNumberValue + secondNumberValue)
   })
-  secondNumber.simulate("change", {
-    target: { name: "secondNumber", value: 10 },
+
+  it("should throw error alert if no numbers were entered", () => {
+    firstNumber.simulate("change", {
+      target: { name: "firstNumber", value: "" },
+    })
+    secondNumber.simulate("change", {
+      target: { name: "secondNumber", value: "" },
+    })
+
+    const addButton = wrapper.find(Button)
+    addButton.simulate("click")
+    result = wrapper.find("#result").props().children
+
+    expect(result).toEqual("Please specify numbers to add!")
   })
-})
-
-it("should add first and second numbers", () => {
-  // ALWAYS RE-FIND after anything changes (simulate)!
-  // https://github.com/enzymejs/enzyme/issues/1757#issuecomment-416669094
-  const firstNumber = wrapper.find("input[name='firstNumber']")
-  const secondNumber = wrapper.find("input[name='secondNumber']")
-  const firstNumberValue = firstNumber.props().value
-  const secondNumberValue = secondNumber.props().value
-
-  const addButton = wrapper.find(Button)
-  addButton.simulate("click")
-  const result = parseInt(wrapper.find("#result").props().children)
-
-  expect(result).toEqual(firstNumberValue + secondNumberValue)
 })
 
 //Testing styled components
