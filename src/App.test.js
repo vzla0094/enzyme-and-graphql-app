@@ -13,71 +13,62 @@ describe("<Button/>", () => {
   const secondNumber = wrapper.find("input[name='secondNumber']")
   let result
 
-  it("should add first and second numbers", () => {
+  const fillInputValues = () => {
     firstNumber.simulate("change", {
       target: { name: "firstNumber", value: 5 },
     })
     secondNumber.simulate("change", {
       target: { name: "secondNumber", value: 10 },
     })
-    // ALWAYS RE-FIND after anything changes (simulate)!
-    // https://github.com/enzymejs/enzyme/issues/1757#issuecomment-416669094
-    const firstNumberValue = wrapper.find("input[name='firstNumber']").props()
-      .value
-    const secondNumberValue = wrapper.find("input[name='secondNumber']").props()
-      .value
+  }
 
-    const addButton = wrapper.find(Button)
-    addButton.simulate("click")
-    result = parseInt(wrapper.find("#result").props().children)
-
-    expect(result).toEqual(firstNumberValue + secondNumberValue)
-  })
-
-  it("should throw error alert if no numbers were entered", () => {
+  const emptyInputValues = () => {
     firstNumber.simulate("change", {
       target: { name: "firstNumber", value: "" },
     })
     secondNumber.simulate("change", {
       target: { name: "secondNumber", value: "" },
     })
+  }
 
+  const getInputSum = (inputName) => {
+    const firstNumberValue = wrapper.find("input[name='firstNumber']").props()
+      .value
+    const secondNumberValue = wrapper.find("input[name='secondNumber']").props()
+      .value
+
+    return firstNumberValue + secondNumberValue
+  }
+
+  const clickAddButton = () => {
     const addButton = wrapper.find(Button)
     addButton.simulate("click")
+  }
+
+  it("should add first and second numbers", () => {
+    fillInputValues()
+    clickAddButton()
+    result = parseInt(wrapper.find("#result").props().children)
+
+    expect(result).toEqual(getInputSum())
+  })
+
+  it("should throw error alert if no numbers were entered", () => {
+    emptyInputValues()
+    clickAddButton()
     result = wrapper.find("#result").props().children
 
     expect(result).toEqual("Please specify numbers to add!")
   })
 
   it("should add the previous calculation and the current one", () => {
-    firstNumber.simulate("change", {
-      target: { name: "firstNumber", value: 5 },
-    })
-    secondNumber.simulate("change", {
-      target: { name: "secondNumber", value: 10 },
-    })
-
-    let addButton = wrapper.find(Button)
-    addButton.simulate("click")
+    fillInputValues()
+    clickAddButton()
     const prevResult = parseInt(wrapper.find("#result").props().children)
-
-    firstNumber.simulate("change", {
-      target: { name: "firstNumber", value: 5 },
-    })
-    secondNumber.simulate("change", {
-      target: { name: "secondNumber", value: 10 },
-    })
-
-    addButton = wrapper.find(Button)
-    addButton.simulate("click")
-
-    const firstNumberValue = wrapper.find("input[name='firstNumber']").props()
-      .value
-    const secondNumberValue = wrapper.find("input[name='secondNumber']").props()
-      .value
+    clickAddButton()
     const result = parseInt(wrapper.find("#result").props().children)
 
-    expect(result).toEqual(prevResult + firstNumberValue + secondNumberValue)
+    expect(result).toEqual(prevResult + getInputSum())
   })
 })
 
