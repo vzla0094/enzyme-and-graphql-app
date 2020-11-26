@@ -9,35 +9,34 @@ it("should render App without crashing", () => {
 
 describe("<Button/>", () => {
   const wrapper = shallow(<App></App>)
-  const firstNumber = wrapper.find("input[name='firstNumber']")
-  const secondNumber = wrapper.find("input[name='secondNumber']")
-  let result
+  const firstInput = wrapper.find("input[name='firstInput']")
+  const secondInput = wrapper.find("input[name='secondInput']")
 
   const fillInputValues = () => {
-    firstNumber.simulate("change", {
-      target: { name: "firstNumber", value: 5 },
+    firstInput.simulate("change", {
+      target: { name: "firstInput", value: 5 },
     })
-    secondNumber.simulate("change", {
-      target: { name: "secondNumber", value: 10 },
+    secondInput.simulate("change", {
+      target: { name: "secondInput", value: 10 },
     })
   }
 
   const emptyInputValues = () => {
-    firstNumber.simulate("change", {
-      target: { name: "firstNumber", value: "" },
+    firstInput.simulate("change", {
+      target: { name: "firstInput", value: "" },
     })
-    secondNumber.simulate("change", {
-      target: { name: "secondNumber", value: "" },
+    secondInput.simulate("change", {
+      target: { name: "secondInput", value: "" },
     })
   }
 
   const getInputSum = (inputName) => {
-    const firstNumberValue = wrapper.find("input[name='firstNumber']").props()
+    const firstInputValue = wrapper.find("input[name='firstInput']").props()
       .value
-    const secondNumberValue = wrapper.find("input[name='secondNumber']").props()
+    const secondInputValue = wrapper.find("input[name='secondInput']").props()
       .value
 
-    return firstNumberValue + secondNumberValue
+    return firstInputValue + secondInputValue
   }
 
   const clickAddButton = () => {
@@ -48,7 +47,7 @@ describe("<Button/>", () => {
   it("should add first and second numbers", () => {
     fillInputValues()
     clickAddButton()
-    result = parseInt(wrapper.find("#result").props().children)
+    const result = parseInt(wrapper.find("#result").props().children)
 
     expect(result).toEqual(getInputSum())
   })
@@ -56,7 +55,7 @@ describe("<Button/>", () => {
   it("should alert user if no numbers were entered", () => {
     emptyInputValues()
     clickAddButton()
-    result = wrapper.find("#result").props().children
+    const result = wrapper.find("#result").props().children
 
     expect(result).toEqual("Please specify numbers to add!")
   })
