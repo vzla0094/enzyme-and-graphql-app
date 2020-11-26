@@ -6,7 +6,6 @@ import { useState } from "react"
 export const AppContainer = styled.div`
   text-align: center;
 `
-
 export const Background = styled.div`
   background-color: #282c34;
   min-height: 100vh;
@@ -31,34 +30,27 @@ export const Result = styled.div`
   padding: 0.25em 3em;
 `
 
+const addNumbers = (a, b, prevResult) => {
+  if (!a || !b) return
+
+  const aInt = parseInt(a)
+  const bInt = parseInt(b)
+  const prevResultInt = parseInt(prevResult)
+
+  return aInt + bInt + (!!prevResultInt && prevResultInt)
+}
+
 function App() {
   const [numbers, setNumbers] = useState({
     firstNumber: "",
     secondNumber: "",
+    result: "Please specify numbers to add!",
   })
 
-  const [result, setResult] = useState("")
-
-  const addNumbers = (a, b, prevResult) => {
-    const aInt = parseInt(a)
-    const bInt = parseInt(b)
-    const prevResultInt = parseInt(prevResult)
-
-    if (prevResultInt) {
-      aInt && bInt
-        ? setResult(aInt + bInt + prevResultInt)
-        : setResult("Please specify numbers to add!")
-    } else {
-      aInt && bInt
-        ? setResult(aInt + bInt)
-        : setResult("Please specify numbers to add!")
-    }
-  }
-
-  const changeNumbers = (number, value) => {
+  const changeNumbers = (key, value) => {
     setNumbers((prevState) => ({
       ...prevState,
-      [number]: value,
+      [key]: value,
     }))
   }
 
@@ -85,14 +77,21 @@ function App() {
         ></input>
         <Button
           onClick={() =>
-            addNumbers(numbers.firstNumber, numbers.secondNumber, result)
+            changeNumbers(
+              "result",
+              addNumbers(
+                numbers.firstNumber,
+                numbers.secondNumber,
+                numbers.result
+              )
+            )
           }
         >
           Add the numbers
         </Button>
         <Result>
           <h4>Result:</h4>
-          <p id="result">{result}</p>
+          <p id="result">{numbers.result}</p>
         </Result>
       </Background>
     </AppContainer>
