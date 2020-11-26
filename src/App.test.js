@@ -53,7 +53,7 @@ describe("<Button/>", () => {
     expect(result).toEqual(getInputSum())
   })
 
-  it("should throw error alert if no numbers were entered", () => {
+  it("should alert user if no numbers were entered", () => {
     emptyInputValues()
     clickAddButton()
     result = wrapper.find("#result").props().children

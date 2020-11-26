@@ -41,16 +41,18 @@ const addNumbers = (a, b, prevResult) => {
 }
 
 function App() {
+  const missingInputValueMessage = "Please specify numbers to add!"
   const [numbers, setNumbers] = useState({
     firstNumber: "",
     secondNumber: "",
-    result: "Please specify numbers to add!",
+    result: missingInputValueMessage,
   })
 
   const changeNumbers = (key, value) => {
     setNumbers((prevState) => ({
       ...prevState,
       [key]: value,
+      ...(!value && { result: missingInputValueMessage }),
     }))
   }
 
