@@ -42,16 +42,16 @@ const addNumbers = (a, b, prevResult) => {
 
 function App() {
   const missingInputValueMessage = "Please specify numbers to add!"
-  const [numbers, setNumbers] = useState({
-    firstNumber: "",
-    secondNumber: "",
+  const [values, setValues] = useState({
+    firstInput: "",
+    secondInput: "",
     result: missingInputValueMessage,
   })
 
-  const changeNumbers = (key, value) => {
-    setNumbers((prevState) => ({
+  const changeNumbers = (inputName, value) => {
+    setValues((prevState) => ({
       ...prevState,
-      [key]: value,
+      [inputName]: value,
       ...(!value && { result: missingInputValueMessage }),
     }))
   }
@@ -60,19 +60,19 @@ function App() {
     <AppContainer>
       <Background>
         <input
-          name="firstNumber"
+          name="firstInput"
           type="number"
           placeholder="enter a number"
-          value={numbers.firstNumber}
+          value={values.firstInput}
           onChange={(event) =>
             changeNumbers(event.target.name, event.target.value)
           }
         ></input>
         <input
-          name="secondNumber"
+          name="secondInput"
           type="number"
           placeholder="enter a number"
-          value={numbers.secondNumber}
+          value={values.secondInput}
           onChange={(event) =>
             changeNumbers(event.target.name, event.target.value)
           }
@@ -81,11 +81,7 @@ function App() {
           onClick={() =>
             changeNumbers(
               "result",
-              addNumbers(
-                numbers.firstNumber,
-                numbers.secondNumber,
-                numbers.result
-              )
+              addNumbers(values.firstInput, values.secondInput, values.result)
             )
           }
         >
@@ -93,7 +89,7 @@ function App() {
         </Button>
         <Result>
           <h4>Result:</h4>
-          <p id="result">{numbers.result}</p>
+          <p id="result">{values.result}</p>
         </Result>
       </Background>
     </AppContainer>
