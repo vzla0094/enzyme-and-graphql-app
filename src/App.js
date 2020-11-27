@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import "./App.css"
 import styled from "styled-components"
-import Calculator from "./Calculator"
+import Calculator from "./components/calculator/Calculator"
 
 export const AppContainer = styled.div`
   text-align: center;
