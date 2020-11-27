@@ -4,17 +4,10 @@ import "./index.css"
 import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 
-import { ApolloProvider } from "react-apollo"
-import { ApolloClient } from "apollo-client"
-import { createHttpLink } from "apollo-link-http"
-import { InMemoryCache } from "apollo-cache-inmemory"
-
-const httpLink = createHttpLink({
-  uri: "https://fakeql.com/graphql/bc60f6513226655096aa1869d426ecb7",
-})
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
 
 const client = new ApolloClient({
-  link: httpLink,
+  uri: "https://fakeql.com/graphql/bc60f6513226655096aa1869d426ecb7",
   cache: new InMemoryCache(),
 })
 
