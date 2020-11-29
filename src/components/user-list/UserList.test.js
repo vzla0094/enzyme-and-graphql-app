@@ -5,10 +5,10 @@ import { mocks } from "./UserList.mocks"
 import { MockedProvider } from "@apollo/client/testing"
 import { waitFor } from "@testing-library/react"
 
-const asyncTest = (wrapper, testCallback) => async () => {
+const asyncTest = (wrapper, testCallbackBody) => async () => {
   await waitFor(() => {
     wrapper.update()
-    testCallback()
+    testCallbackBody()
   })
 }
 
