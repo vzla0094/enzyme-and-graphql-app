@@ -5,7 +5,7 @@ import { mocks } from "./UserList.mocks"
 import { MockedProvider } from "@apollo/client/testing"
 import { waitFor } from "@testing-library/react"
 
-const asyncTest = (wrapper, testCallbackBody) => async () => {
+const getAsyncTestCallback = (wrapper, testCallbackBody) => async () => {
   await waitFor(() => {
     wrapper.update()
     testCallbackBody()
@@ -23,14 +23,14 @@ describe("<UserList/>", () => {
 
   it(
     "should render a title <h2 class='title'>Users:</h2>",
-    asyncTest(wrapper, () => {
+    getAsyncTestCallback(wrapper, () => {
       expect(wrapper.find("h2[className='title']").text()).toContain("Users:")
     })
   )
 
   it(
     "should render 10 names inside <p class='user'/> elements",
-    asyncTest(wrapper, () => {
+    getAsyncTestCallback(wrapper, () => {
       expect(wrapper.find("p[className='user']")).toHaveLength(10)
     })
   )
