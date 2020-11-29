@@ -2,6 +2,7 @@
 import "./App.css"
 import styled from "styled-components"
 import Calculator from "./components/calculator/Calculator"
+import UserList from "./components/user-list/UserList"
 
 export const AppContainer = styled.div`
   text-align: center;
@@ -21,6 +22,7 @@ function App() {
   return (
     <AppContainer>
       <Background>
+        <UserList />
         <Calculator></Calculator>
       </Background>
     </AppContainer>
