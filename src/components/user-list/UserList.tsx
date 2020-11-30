@@ -20,7 +20,7 @@ const UserList = () => {
     <div>
       <h2 className="title">Users:</h2>
       <div>
-        {data.users.map((user) => (
+        {data.users.map((user: { id: string, firstname: string }) => (
           <div key={user.id}>
             <p className="user" key={user.id}>
               {user.firstname}
