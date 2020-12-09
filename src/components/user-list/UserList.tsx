@@ -1,7 +1,8 @@
 import { gql, useQuery } from "@apollo/client"
+import {GQLQuery} from "../../generated/graphql"
 
 export const USERS_QUERY = gql`
-  {
+  query {
     users(limit: 10) {
       id
       firstname
@@ -10,7 +11,7 @@ export const USERS_QUERY = gql`
 `
 
 const UserList = () => {
-  const { loading, error, data } = useQuery(USERS_QUERY, {
+  const { loading, error, data } = useQuery<GQLQuery>(USERS_QUERY, {
     variables: { limit: 10 },
   })
   if (loading) return <div className="loading">Loading</div>
@@ -20,10 +21,10 @@ const UserList = () => {
     <div>
       <h2 className="title">Users:</h2>
       <div>
-        {data.users.map((user: { id: string, firstname: string }) => (
-          <div key={user.id}>
-            <p className="user" key={user.id}>
-              {user.firstname}
+        {data?.users?.map((user) => (
+          <div key={user?.id}>
+            <p className="user" key={user?.id}>
+              {user?.firstname}
             </p>
           </div>
         ))}

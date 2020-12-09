@@ -15,82 +15,82 @@ export type Scalars = {
   _FieldSet: any;
 };
 
-export type Query = {
+export type GQLQuery = {
   __typename?: 'Query';
-  users?: Maybe<Array<Maybe<User>>>;
-  user?: Maybe<User>;
-  posts?: Maybe<Array<Maybe<Post>>>;
-  post?: Maybe<Post>;
-  comments?: Maybe<Array<Maybe<Comment>>>;
-  comment?: Maybe<Comment>;
+  users?: Maybe<Array<Maybe<GQLUser>>>;
+  user?: Maybe<GQLUser>;
+  posts?: Maybe<Array<Maybe<GQLPost>>>;
+  post?: Maybe<GQLPost>;
+  comments?: Maybe<Array<Maybe<GQLComment>>>;
+  comment?: Maybe<GQLComment>;
   _typeDefs: Scalars['String'];
-  _entities: Array<Maybe<_Entity>>;
-  _service: _Service;
+  _entities: Array<Maybe<GQL_Entity>>;
+  _service: GQL_Service;
   _aggregation: Scalars['Float'];
 };
 
 
-export type QueryUsersArgs = {
+export type GQLQueryUsersArgs = {
   page?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   sort?: Maybe<Scalars['String']>;
   dir?: Maybe<Scalars['String']>;
-  where?: Maybe<UsersWhere>;
+  where?: Maybe<GQLUsersWhere>;
   ref?: Maybe<Scalars['String']>;
 };
 
 
-export type QueryUserArgs = {
+export type GQLQueryUserArgs = {
   id: Scalars['ID'];
 };
 
 
-export type QueryPostsArgs = {
+export type GQLQueryPostsArgs = {
   page?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   sort?: Maybe<Scalars['String']>;
   dir?: Maybe<Scalars['String']>;
-  where?: Maybe<PostsWhere>;
+  where?: Maybe<GQLPostsWhere>;
   ref?: Maybe<Scalars['String']>;
 };
 
 
-export type QueryPostArgs = {
+export type GQLQueryPostArgs = {
   id: Scalars['ID'];
 };
 
 
-export type QueryCommentsArgs = {
+export type GQLQueryCommentsArgs = {
   page?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   sort?: Maybe<Scalars['String']>;
   dir?: Maybe<Scalars['String']>;
-  where?: Maybe<CommentsWhere>;
+  where?: Maybe<GQLCommentsWhere>;
   ref?: Maybe<Scalars['String']>;
 };
 
 
-export type QueryCommentArgs = {
+export type GQLQueryCommentArgs = {
   id: Scalars['ID'];
 };
 
 
-export type Query_EntitiesArgs = {
+export type GQLQuery_EntitiesArgs = {
   representations: Array<Scalars['_Any']>;
 };
 
 
-export type Query_AggregationArgs = {
+export type GQLQuery_AggregationArgs = {
   type?: Maybe<Scalars['String']>;
   field?: Maybe<Scalars['String']>;
   stat: Scalars['String'];
   ref?: Maybe<Scalars['String']>;
 };
 
-export type UsersWhere = {
-  and?: Maybe<Array<UsersWhere>>;
-  or?: Maybe<Array<UsersWhere>>;
-  not?: Maybe<Array<UsersWhere>>;
+export type GQLUsersWhere = {
+  and?: Maybe<Array<GQLUsersWhere>>;
+  or?: Maybe<Array<GQLUsersWhere>>;
+  not?: Maybe<Array<GQLUsersWhere>>;
   id_gt?: Maybe<Scalars['Float']>;
   id_ge?: Maybe<Scalars['Float']>;
   id_lt?: Maybe<Scalars['Float']>;
@@ -120,35 +120,35 @@ export type UsersWhere = {
   like?: Maybe<Scalars['String']>;
 };
 
-export type User = {
+export type GQLUser = {
   __typename?: 'User';
   id: Scalars['ID'];
-  _nest: User;
+  _nest: GQLUser;
   _int: Scalars['Int'];
   _float: Scalars['Float'];
   _boolean: Scalars['Boolean'];
   _string: Scalars['String'];
-  posts?: Maybe<Array<Maybe<Post>>>;
-  comments?: Maybe<Array<Maybe<Comment>>>;
+  posts?: Maybe<Array<Maybe<GQLPost>>>;
+  comments?: Maybe<Array<Maybe<GQLComment>>>;
   firstname: Scalars['String'];
   age: Scalars['Int'];
 };
 
 
-export type User_IntArgs = {
+export type GQLUser_IntArgs = {
   min?: Maybe<Scalars['Int']>;
   max?: Maybe<Scalars['Int']>;
 };
 
 
-export type User_FloatArgs = {
+export type GQLUser_FloatArgs = {
   min?: Maybe<Scalars['Float']>;
   max?: Maybe<Scalars['Float']>;
   fixed?: Maybe<Scalars['Int']>;
 };
 
 
-export type User_StringArgs = {
+export type GQLUser_StringArgs = {
   type?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   template?: Maybe<Scalars['String']>;
@@ -165,39 +165,39 @@ export type User_StringArgs = {
 };
 
 
-export type UserPostsArgs = {
+export type GQLUserPostsArgs = {
   page?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   sort?: Maybe<Scalars['String']>;
   dir?: Maybe<Scalars['String']>;
-  where?: Maybe<PostsWhere>;
+  where?: Maybe<GQLPostsWhere>;
   ref?: Maybe<Scalars['String']>;
 };
 
 
-export type UserCommentsArgs = {
+export type GQLUserCommentsArgs = {
   page?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   sort?: Maybe<Scalars['String']>;
   dir?: Maybe<Scalars['String']>;
-  where?: Maybe<CommentsWhere>;
+  where?: Maybe<GQLCommentsWhere>;
   ref?: Maybe<Scalars['String']>;
 };
 
 
-export type UserFirstnameArgs = {
+export type GQLUserFirstnameArgs = {
   length?: Maybe<Scalars['Int']>;
 };
 
 
-export type UserAgeArgs = {
-  math?: Maybe<MathOptions>;
+export type GQLUserAgeArgs = {
+  math?: Maybe<GQLMathOptions>;
 };
 
-export type PostsWhere = {
-  and?: Maybe<Array<PostsWhere>>;
-  or?: Maybe<Array<PostsWhere>>;
-  not?: Maybe<Array<PostsWhere>>;
+export type GQLPostsWhere = {
+  and?: Maybe<Array<GQLPostsWhere>>;
+  or?: Maybe<Array<GQLPostsWhere>>;
+  not?: Maybe<Array<GQLPostsWhere>>;
   id_gt?: Maybe<Scalars['Float']>;
   id_ge?: Maybe<Scalars['Float']>;
   id_lt?: Maybe<Scalars['Float']>;
@@ -225,9 +225,9 @@ export type PostsWhere = {
   date_exists?: Maybe<Scalars['Boolean']>;
   search?: Maybe<Scalars['String']>;
   like?: Maybe<Scalars['String']>;
-  user_and?: Maybe<Array<UsersWhere>>;
-  user_or?: Maybe<Array<UsersWhere>>;
-  user_not?: Maybe<Array<UsersWhere>>;
+  user_and?: Maybe<Array<GQLUsersWhere>>;
+  user_or?: Maybe<Array<GQLUsersWhere>>;
+  user_not?: Maybe<Array<GQLUsersWhere>>;
   user_id_gt?: Maybe<Scalars['Float']>;
   user_id_ge?: Maybe<Scalars['Float']>;
   user_id_lt?: Maybe<Scalars['Float']>;
@@ -257,35 +257,35 @@ export type PostsWhere = {
   user_like?: Maybe<Scalars['String']>;
 };
 
-export type Post = {
+export type GQLPost = {
   __typename?: 'Post';
   id: Scalars['ID'];
-  _nest: Post;
+  _nest: GQLPost;
   _int: Scalars['Int'];
   _float: Scalars['Float'];
   _boolean: Scalars['Boolean'];
   _string: Scalars['String'];
-  comments?: Maybe<Array<Maybe<Comment>>>;
-  user: User;
+  comments?: Maybe<Array<Maybe<GQLComment>>>;
+  user: GQLUser;
   title: Scalars['String'];
   date: Scalars['String'];
 };
 
 
-export type Post_IntArgs = {
+export type GQLPost_IntArgs = {
   min?: Maybe<Scalars['Int']>;
   max?: Maybe<Scalars['Int']>;
 };
 
 
-export type Post_FloatArgs = {
+export type GQLPost_FloatArgs = {
   min?: Maybe<Scalars['Float']>;
   max?: Maybe<Scalars['Float']>;
   fixed?: Maybe<Scalars['Int']>;
 };
 
 
-export type Post_StringArgs = {
+export type GQLPost_StringArgs = {
   type?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   template?: Maybe<Scalars['String']>;
@@ -302,29 +302,29 @@ export type Post_StringArgs = {
 };
 
 
-export type PostCommentsArgs = {
+export type GQLPostCommentsArgs = {
   page?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   sort?: Maybe<Scalars['String']>;
   dir?: Maybe<Scalars['String']>;
-  where?: Maybe<CommentsWhere>;
+  where?: Maybe<GQLCommentsWhere>;
   ref?: Maybe<Scalars['String']>;
 };
 
 
-export type PostTitleArgs = {
+export type GQLPostTitleArgs = {
   length?: Maybe<Scalars['Int']>;
 };
 
 
-export type PostDateArgs = {
+export type GQLPostDateArgs = {
   length?: Maybe<Scalars['Int']>;
 };
 
-export type CommentsWhere = {
-  and?: Maybe<Array<CommentsWhere>>;
-  or?: Maybe<Array<CommentsWhere>>;
-  not?: Maybe<Array<CommentsWhere>>;
+export type GQLCommentsWhere = {
+  and?: Maybe<Array<GQLCommentsWhere>>;
+  or?: Maybe<Array<GQLCommentsWhere>>;
+  not?: Maybe<Array<GQLCommentsWhere>>;
   id_gt?: Maybe<Scalars['Float']>;
   id_ge?: Maybe<Scalars['Float']>;
   id_lt?: Maybe<Scalars['Float']>;
@@ -345,9 +345,9 @@ export type CommentsWhere = {
   text_exists?: Maybe<Scalars['Boolean']>;
   search?: Maybe<Scalars['String']>;
   like?: Maybe<Scalars['String']>;
-  user_and?: Maybe<Array<UsersWhere>>;
-  user_or?: Maybe<Array<UsersWhere>>;
-  user_not?: Maybe<Array<UsersWhere>>;
+  user_and?: Maybe<Array<GQLUsersWhere>>;
+  user_or?: Maybe<Array<GQLUsersWhere>>;
+  user_not?: Maybe<Array<GQLUsersWhere>>;
   user_id_gt?: Maybe<Scalars['Float']>;
   user_id_ge?: Maybe<Scalars['Float']>;
   user_id_lt?: Maybe<Scalars['Float']>;
@@ -375,9 +375,9 @@ export type CommentsWhere = {
   user_age_exists?: Maybe<Scalars['Boolean']>;
   user_search?: Maybe<Scalars['String']>;
   user_like?: Maybe<Scalars['String']>;
-  post_and?: Maybe<Array<PostsWhere>>;
-  post_or?: Maybe<Array<PostsWhere>>;
-  post_not?: Maybe<Array<PostsWhere>>;
+  post_and?: Maybe<Array<GQLPostsWhere>>;
+  post_or?: Maybe<Array<GQLPostsWhere>>;
+  post_not?: Maybe<Array<GQLPostsWhere>>;
   post_id_gt?: Maybe<Scalars['Float']>;
   post_id_ge?: Maybe<Scalars['Float']>;
   post_id_lt?: Maybe<Scalars['Float']>;
@@ -407,34 +407,34 @@ export type CommentsWhere = {
   post_like?: Maybe<Scalars['String']>;
 };
 
-export type Comment = {
+export type GQLComment = {
   __typename?: 'Comment';
   id: Scalars['ID'];
-  _nest: Comment;
+  _nest: GQLComment;
   _int: Scalars['Int'];
   _float: Scalars['Float'];
   _boolean: Scalars['Boolean'];
   _string: Scalars['String'];
-  user: User;
-  post: Post;
+  user: GQLUser;
+  post: GQLPost;
   text: Scalars['String'];
 };
 
 
-export type Comment_IntArgs = {
+export type GQLComment_IntArgs = {
   min?: Maybe<Scalars['Int']>;
   max?: Maybe<Scalars['Int']>;
 };
 
 
-export type Comment_FloatArgs = {
+export type GQLComment_FloatArgs = {
   min?: Maybe<Scalars['Float']>;
   max?: Maybe<Scalars['Float']>;
   fixed?: Maybe<Scalars['Int']>;
 };
 
 
-export type Comment_StringArgs = {
+export type GQLComment_StringArgs = {
   type?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   template?: Maybe<Scalars['String']>;
@@ -451,135 +451,146 @@ export type Comment_StringArgs = {
 };
 
 
-export type CommentTextArgs = {
+export type GQLCommentTextArgs = {
   length?: Maybe<Scalars['Int']>;
 };
 
-export enum MathOptions {
+export enum GQLMathOptions {
   Round = 'ROUND',
   Floor = 'FLOOR',
   Ceil = 'CEIL'
 }
 
 
-export type _Entity = User | Post | Comment;
+export type GQL_Entity = GQLUser | GQLPost | GQLComment;
 
-export type _Service = {
+export type GQL_Service = {
   __typename?: '_Service';
   sdl?: Maybe<Scalars['String']>;
 };
 
-export type Mutation = {
+export type GQLMutation = {
   __typename?: 'Mutation';
   incrementUserAge?: Maybe<Scalars['Int']>;
   decrementUserAge?: Maybe<Scalars['Int']>;
-  createUser: User;
-  updateUser: User;
+  createUser: GQLUser;
+  updateUser: GQLUser;
   deleteUser: Scalars['ID'];
-  createPost: Post;
-  updatePost: Post;
+  createPost: GQLPost;
+  updatePost: GQLPost;
   deletePost: Scalars['ID'];
-  createComment: Comment;
-  updateComment: Comment;
+  createComment: GQLComment;
+  updateComment: GQLComment;
   deleteComment: Scalars['ID'];
   _createSnapshot: Scalars['Boolean'];
 };
 
 
-export type MutationIncrementUserAgeArgs = {
+export type GQLMutationIncrementUserAgeArgs = {
   id: Scalars['ID'];
 };
 
 
-export type MutationDecrementUserAgeArgs = {
+export type GQLMutationDecrementUserAgeArgs = {
   id: Scalars['ID'];
 };
 
 
-export type MutationCreateUserArgs = {
-  input: CreateUserInput;
+export type GQLMutationCreateUserArgs = {
+  input: GQLCreateUserInput;
 };
 
 
-export type MutationUpdateUserArgs = {
+export type GQLMutationUpdateUserArgs = {
   id: Scalars['ID'];
-  input: UpdateUserInput;
+  input: GQLUpdateUserInput;
 };
 
 
-export type MutationDeleteUserArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationCreatePostArgs = {
-  input: CreatePostInput;
-};
-
-
-export type MutationUpdatePostArgs = {
-  id: Scalars['ID'];
-  input: UpdatePostInput;
-};
-
-
-export type MutationDeletePostArgs = {
+export type GQLMutationDeleteUserArgs = {
   id: Scalars['ID'];
 };
 
 
-export type MutationCreateCommentArgs = {
-  input: CreateCommentInput;
+export type GQLMutationCreatePostArgs = {
+  input: GQLCreatePostInput;
 };
 
 
-export type MutationUpdateCommentArgs = {
+export type GQLMutationUpdatePostArgs = {
   id: Scalars['ID'];
-  input: UpdateCommentInput;
+  input: GQLUpdatePostInput;
 };
 
 
-export type MutationDeleteCommentArgs = {
+export type GQLMutationDeletePostArgs = {
   id: Scalars['ID'];
 };
 
 
-export type Mutation_CreateSnapshotArgs = {
+export type GQLMutationCreateCommentArgs = {
+  input: GQLCreateCommentInput;
+};
+
+
+export type GQLMutationUpdateCommentArgs = {
+  id: Scalars['ID'];
+  input: GQLUpdateCommentInput;
+};
+
+
+export type GQLMutationDeleteCommentArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type GQLMutation_CreateSnapshotArgs = {
   key: Scalars['String'];
 };
 
-export type CreateUserInput = {
+export type GQLCreateUserInput = {
   firstname: Scalars['String'];
   age: Scalars['Int'];
 };
 
-export type UpdateUserInput = {
+export type GQLUpdateUserInput = {
   firstname?: Maybe<Scalars['String']>;
   age?: Maybe<Scalars['Int']>;
 };
 
-export type CreatePostInput = {
+export type GQLCreatePostInput = {
   user_id: Scalars['ID'];
   title: Scalars['String'];
   date: Scalars['String'];
 };
 
-export type UpdatePostInput = {
+export type GQLUpdatePostInput = {
   user_id?: Maybe<Scalars['ID']>;
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
 };
 
-export type CreateCommentInput = {
+export type GQLCreateCommentInput = {
   user_id: Scalars['ID'];
   post_id: Scalars['ID'];
   text: Scalars['String'];
 };
 
-export type UpdateCommentInput = {
+export type GQLUpdateCommentInput = {
   user_id?: Maybe<Scalars['ID']>;
   post_id?: Maybe<Scalars['ID']>;
   text?: Maybe<Scalars['String']>;
 };
 
 
+
+export type GQLUnnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GQLUnnamed_1_Query = (
+  { __typename?: 'Query' }
+  & { users?: Maybe<Array<Maybe<(
+    { __typename?: 'User' }
+    & Pick<GQLUser, 'id' | 'firstname'>
+  )>>> }
+);
