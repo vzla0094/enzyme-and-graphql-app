@@ -1,6 +1,9 @@
 schema: https://fakeql.com/graphql/bc60f6513226655096aa1869d426ecb7
 documents: ./src/**/*.tsx
+config:
+  typesPrefix: GQL
 generates:
   ./src/generated/graphql.tsx: 
     plugins:
       - typescript
+      - typescript-operations
